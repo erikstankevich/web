@@ -1,0 +1,40 @@
+/* Reset некоторых базовых стилей */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Основные элементы */
+body 
+{
+	background-color: #636363;
+	font-family: Arial, sans-serif;
+	line-height: 1.5;
+}
+
+header, main, footer {
+    	width: 90%;
+    	max-width: 1200px;
+    	margin: auto;
+    	padding: 1rem 0;
+}
+
+/* Ссылки */
+a {
+    	color: inherit;
+    	text-decoration: none;
+}
+
+/* Кнопки */
+button {
+    	cursor: pointer;
+    	font-size: 1rem;
+    	padding: 0.5rem 1rem;
+}
+
+/* Списки */
+ul, ol {
+    	list-style: none;
+}
+
