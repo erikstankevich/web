@@ -1,40 +1,46 @@
 /* Reset некоторых базовых стилей */
-* {
+*
+{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-/* Основные элементы */
 body 
 {
 	background-color: #636363;
-	font-family: Arial, sans-serif;
+	font-family: sans-serif;
 	line-height: 1.5;
 }
 
-header, main, footer {
+header, main, footer 
+{
     	width: 90%;
     	max-width: 1200px;
     	margin: auto;
-    	padding: 1rem 0;
+    	padding: 1rem;
 }
 
-/* Ссылки */
-a {
+a 
+{
     	color: inherit;
     	text-decoration: none;
 }
 
-/* Кнопки */
-button {
+button 
+{
     	cursor: pointer;
     	font-size: 1rem;
-    	padding: 0.5rem 1rem;
+    	padding: 5rem 5rem;
 }
 
-/* Списки */
-ul, ol {
+p 
+{
+	margin: 1rem;
+}
+
+ul, ol 
+{
     	list-style: none;
 }
 
