@@ -32,15 +32,21 @@ button
     	cursor: pointer;
     	font-size: 1rem;
     	padding: 5rem 5rem;
+	margin-top: 1rem;
 }
 
 p 
 {
-	margin: 1rem;
+	margin: 0rem;
 }
 
 ul, ol 
 {
     	list-style: none;
 }
+
+.grid-split {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	height: 100vh;
 
