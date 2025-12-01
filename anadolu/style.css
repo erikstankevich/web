@@ -17,8 +17,6 @@ header, main, footer
 {
     	width: 90%;
     	max-width: 1200px;
-    	margin: auto;
-    	padding: 1rem;
 }
 
 a 
@@ -27,13 +25,7 @@ a
     	text-decoration: none;
 }
 
-button 
-{
-    	cursor: pointer;
-    	font-size: 1rem;
-    	padding: 5rem 5rem;
-	margin-top: 1rem;
-}
+
 
 p 
 {
@@ -61,5 +53,21 @@ ul, ol
 .eigenwerbung
 {
   background-color: #999999;
+  color: #fff;
+  padding: 1rem;
 }
 
+.left-side 
+{
+  margin-left: 1rem;
+}
+
+.right-side
+{
+  margin-right: 1rem;
+}
+
+.grid-split
+{
+  margin-top: 1rem;
+}
