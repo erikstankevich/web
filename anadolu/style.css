@@ -8,7 +8,7 @@
 
 body 
 {
-	background-color: #636363;
+	background-color: #BABABA;
 	font-family: sans-serif;
 	line-height: 1.5;
 }
@@ -56,5 +56,10 @@ ul, ol
 .speisekarte 
 {
 	margin-bottom: 0.5rem;
+}
+
+.eigenwerbung
+{
+  background-color: #999999;
 }
 
