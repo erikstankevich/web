@@ -60,11 +60,20 @@ ul, ol
 .left-side 
 {
   margin-left: 2rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  background-color: #CCC;
 }
 
 .right-side
 {
   margin-right: 2rem;
+  margin-left: 1rem;
+}
+
+.right-side > * 
+{
+  margin-bottom: 1rem;
 }
 
 .grid-split
