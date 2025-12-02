@@ -1,0 +1,94 @@
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body 
+{
+	background-color: #BABABA;
+	font-family: sans-serif;
+	line-height: 1.5;
+}
+
+header, main
+{
+  width: 90%;
+  max-width: 1200px;
+}
+
+a 
+{
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+p 
+{
+	margin: 0rem;
+}
+
+ul, ol 
+{
+  list-style: none;
+}
+
+.grid-split 
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	height: 100vh;
+}
+
+
+.speisekarte 
+{
+	margin-bottom: 0.5rem;
+}
+
+.eigenwerbung
+{
+  background-color: #888;
+  color: #fff;
+  padding: 1rem;
+}
+
+.left-side 
+{
+  margin-left: 2rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  background-color: #CCC;
+}
+
+.right-side
+{
+  margin-right: 2rem;
+  margin-left: 1rem;
+}
+
+.right-side > * 
+{
+  margin-bottom: 1rem;
+}
+
+.grid-split
+{
+  margin-top: 1rem;
+}
+
+footer
+{
+  background-color: #999;
+  margin-top: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  font-size: 0.9rem;
+  color: #222;
+}
