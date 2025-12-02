@@ -15,14 +15,14 @@ body
 
 header, main
 {
-    	width: 90%;
-    	max-width: 1200px;
+  width: 90%;
+  max-width: 1200px;
 }
 
 a 
 {
-    	color: inherit;
-    	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 
@@ -34,7 +34,7 @@ p
 
 ul, ol 
 {
-    	list-style: none;
+  list-style: none;
 }
 
 .grid-split 
@@ -84,4 +84,10 @@ ul, ol
 footer
 {
   padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  font-size: 0.9rem;
+  color: #222;
 }
