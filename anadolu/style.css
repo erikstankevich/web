@@ -13,7 +13,7 @@ body
 	line-height: 1.5;
 }
 
-header, main, footer 
+header, main
 {
     	width: 90%;
     	max-width: 1200px;
@@ -52,7 +52,7 @@ ul, ol
 
 .eigenwerbung
 {
-  background-color: #999999;
+  background-color: #888;
   color: #fff;
   padding: 1rem;
 }
@@ -79,4 +79,9 @@ ul, ol
 .grid-split
 {
   margin-top: 1rem;
+}
+
+footer
+{
+  padding: 2rem;
 }
