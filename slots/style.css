@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body
 {
   background-color: #999999;
@@ -41,7 +42,7 @@ a
 
 .up-side
 {
-
+  margin: 1rem;
 }
 
 .reel
@@ -52,4 +53,11 @@ a
   font-size: 8rem;
   background-color: #000;
   aspect-ratio: 1/1;
+  margin: 1rem;
 }
+
+#slots
+{
+  text-align: center;
+}
+
