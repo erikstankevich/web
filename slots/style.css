@@ -29,7 +29,7 @@ a
 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 50vh;
+  height: 10;
 }
 
 .eigenwerbung
@@ -41,9 +41,15 @@ a
 
 .up-side
 {
-  margin-left: 2rem;
-  margin-right: 1rem;
-  padding: 1rem;
-  background-color: #555;
 
+}
+
+.reel
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8rem;
+  background-color: #000;
+  aspect-ratio: 1/1;
 }
