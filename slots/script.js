@@ -35,7 +35,7 @@ function applyWin(winType) {
   let reward = 0;
 
   if (winType === "three") {
-    reward = 5;
+    reward = Math.floor(Math.random() * 100) +1;
   }
 
   if (reward > 0) {
