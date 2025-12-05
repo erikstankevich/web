@@ -14,6 +14,12 @@ money.textContent = "$ " + moneyvalue;
 
 let autoInterval = null;
 
+function animate(reel)
+{
+  reel.classList.add("spin");
+  setTimeout(() => reel.classList.remove("spin"), 200);
+}
+
 function randomEmoji() {
   return emojis[Math.floor(Math.random() * emojis.length)];
 }
@@ -26,18 +32,36 @@ function doSpin()
     result.textContent = "0"
     return;
   }
+
   
   moneyvalue -= 0.1;
   money.textContent = "$ " + Math.floor(moneyvalue*10)/10;
 
+  animate(reel1);
+  animate(reel2);
+  animate(reel3);
+  let duration = 400;
+  let start = Date.now();
 
-  const r1 = randomEmoji();
-  const r2 = randomEmoji();
-  const r3 = randomEmoji();
+  let interval = setInterval(() => {
+      reel1.textContent = randomEmoji();
+      reel2.textContent = randomEmoji();
+      reel3.textContent = randomEmoji();
 
-  reel1.textContent = r1;
-  reel2.textContent = r2;
-  reel3.textContent = r3;
+      if (Date.now() - start > duration)
+      {
+        clearInterval(interval);
+
+        const r1 = randomEmoji();
+        const r2 = randomEmoji();
+        const r3 = randomEmoji();
+
+        reel1.textContent = r1;
+        reel2.textContent = r2;
+        reel3.textContent = r3;
+
+      }
+    }, 50);
 }
 
 spin.addEventListener("click", doSpin);
@@ -61,7 +85,7 @@ spin.addEventListener("click", doSpin);
         return;
       }
       doSpin();
-    }, 1000);
+    }, 1300);
 });
 
 
