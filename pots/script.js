@@ -10,7 +10,7 @@ const result = document.getElementById("result");
 const money = document.getElementById("money");
 
 let moneyvalue = 10;
-money.textContent = "$ " + moneyvalue;
+money.textContent = "µ " + moneyvalue;
 
 let autoInterval = null;
 
@@ -40,7 +40,7 @@ function applyWin(winType) {
 
   if (reward > 0) {
     moneyvalue += reward;
-    money.textContent = "$ " + Math.floor(moneyvalue * 10) / 10;
+    money.textContent = "µ " + Math.floor(moneyvalue * 10) / 10;
     result.textContent = "win";
   } else {
     result.textContent = "no win";
@@ -54,7 +54,7 @@ function doSpin() {
   }
 
   moneyvalue -= 0.1;
-  money.textContent = "$ " + Math.floor(moneyvalue * 10) / 10;
+  money.textContent = "µ " + Math.floor(moneyvalue * 10) / 10;
 
   animate(reel1);
   animate(reel2);

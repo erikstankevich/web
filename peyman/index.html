@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Peymann Taunusstein</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="grid-split">
+    <!-- Left side: Menu -->
     <div class="left-side">
-      
       <header>
         <h5 id="community">Community Page / Drittseite</h5>
         <h2>Peymann Taunusstein</h2>
@@ -42,9 +42,8 @@
         <ul>Pizza Bolognese 9,50</ul>
         <ul>Pizza Pepperoniwurst 9,10</ul>
         <ul>Pizza Sucuk 9,20</ul>
-
       </main>
- 
+
       <br>
 
       <div>
@@ -54,7 +53,7 @@
     </div>
 
     <div class="right-side">
-      <div id="slots">
+      <div id="shots">
         <div class="reels">
           <div class="reel" id="reel1">🍒</div>
           <div class="reel" id="reel2">🍋</div>
@@ -67,15 +66,48 @@
         <p id="result">#</p>
       </div>
 
+      <!-- Yandex Ad Container -->
+      <div id="yandex-ad" style="margin-top: 20px; width: 300px; height: 250px;"></div>
     </div>
-
   </div>
+
   <footer>
     <a href="..\Impressum\index.html">Impressum</a>
     <p>&copy; 2025</p>
   </footer>
 
+  <!-- Slot machine JS -->
   <script src="script.js"></script>
+
+  <!-- Yandex Prebid JS -->
+  <script src="https://yandex.ru/ads/system/publisher/prebid.js"></script>
+  <script>
+    var adUnits = [{
+      code: 'yandex-ad',
+      mediaTypes: {
+        banner: {
+          sizes: [[300, 250]]
+        }
+      },
+      bids: [{
+        bidder: 'yandex',
+        params: {
+          placementId: 'R-A-18009035-1', // Replace with your Yandex ad unit ID
+          cur: 'USD'
+        }
+      }]
+    }];
+
+    pbjs.que.push(function() {
+      pbjs.addAdUnits(adUnits);
+      pbjs.requestBids({
+        bidsBackHandler: function() {
+          pbjs.setTargetingForGPTAsync();
+          console.log('Yandex ad request complete');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
 
