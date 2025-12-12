@@ -43,6 +43,14 @@ ul, ol
 	height: 100vh;
 }
 
+@media (max-width: 768px)
+{
+  .grid-split 
+   {
+     grid-template-columns: 1fr;
+   }
+ }
+
 
 .speisekarte 
 {
