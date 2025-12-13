@@ -40,7 +40,7 @@ ul, ol
 {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 
@@ -91,4 +91,5 @@ footer
   gap: 4rem;
   font-size: 0.9rem;
   color: #222;
+
 }
