@@ -97,11 +97,12 @@ footer
 .banner
 {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 4rem;
-  font-size: 0.9rem;
-  color: #222;
-  background-color: #fff;
-  padding: 2rem;
+  font-size: 1.6rem;
+  color: #f57e46;
+  background-color: #161617;
+  padding: 0.8rem;
+  font-family: "Times New Roman";
 }
