@@ -7,7 +7,7 @@
 
 body 
 {
-	background-color: #999;
+	background-color: #555;
 	font-family: sans-serif;
 	line-height: 1.5;
 }
@@ -43,6 +43,11 @@ ul, ol
 	min-height: 100vh;
 }
 
+.title
+{
+  padding-bottom: 0.5rem;
+}
+
 
 .speisekarte 
 {
@@ -51,18 +56,31 @@ ul, ol
 
 .eigenwerbung
 {
-  background-color: #555;
+  background-color: #222;
   color: #fff;
   padding: 1rem;
 }
 
 .left-side 
 {
-  margin-left: 2rem;
+  margin-left: 1rem;
   margin-right: 1rem;
   padding: 1rem;
-  background-color: #CCC;
 }
+
+.games-container
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.game
+{
+  border: 3px solid #AAA;
+  padding: 1rem;
+}
+
 
 .right-side
 {
@@ -82,7 +100,7 @@ ul, ol
 
 footer
 {
-  background-color: #666;
+  background-color: #161617;
   margin-top: 1rem;
   padding: 2rem;
   display: flex;
@@ -90,6 +108,28 @@ footer
   align-items: center;
   gap: 4rem;
   font-size: 0.9rem;
-  color: #222;
+  color: #999;
 
 }
+
+.banner
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  font-size: 1.6rem;
+  color: #f57e46;
+  background-color: #161617;
+  padding: 0.8rem;
+  font-family: "Times New Roman";
+}
+
+@media (max-width: 789px)
+{
+  .grid-split
+  {
+    grid-template-columns: 1fr;
+  }
+}
+
