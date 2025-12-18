@@ -33,32 +33,36 @@ Runner.run(Runner.create(), engine);
 const walls = [
   Bodies.rectangle(300, 400, 600, 40, { isStatic: true }), // floor
   Bodies.rectangle(50, 400, 40, 800, { isStatic: true }), // left
-  Bodies.rectangle(350, 400, 40, 800, { isStatic: true })  // right
+  Bodies.rectangle(350, 400, 40, 800, { isStatic: true }),
+  Bodies.rectangle(300, 0, 600, 40, { isStatic: true })
 ];
 
 Composite.add(world, walls);
 
 // ----- PEGS -----
-const pegRadius = 13;
+const pegRadius = 9;
 
-for (let y = 50; y < 300; y += 40) {
-  for (let x = 50; x < 300; x += 40) {
-    const offset = (y / 80) % 2 ? 40 : 0;
-    const peg = Bodies.circle(x + offset, y, pegRadius, {
-      isStatic: true,
-      render: { fillStyle: "#0ff" }
-    });
-    Composite.add(world, peg);
-  }
-}
+const pegs = 
+  [
+    Bodies.polygon(200, 260, 3, pegRadius, 
+      { 
+        isStatic: true,
+        isSuperPeg: true,
+        render: { fillStyle: "#ff0" }
+      })
+  ];
+
+Composite.add(world, pegs);
 
 // ----- BALL DROP -----
-function dropBall(x = 300) {
-  const ball = Bodies.circle(x, 40, 8, {
+function dropBall(x = 30) {
+  const ball = Bodies.circle(80, 40, 8, {
+    label: "Ball",
     restitution: 1.1,   // bounciness
     friction: 0.001,
     density: 0.002,
-    render: { fillStyle: "#fff" }
+    render: { fillStyle: "#fff" },
+    hasSpawnedExtra: false
   });
   Composite.add(world, ball);
 }
@@ -70,16 +74,40 @@ document.addEventListener("click", (e) => {
   dropBall(x);
 });
 
-// ----- OPTIONAL: MOUSE DRAG -----
-const mouse = Mouse.create(render.canvas);
-const mouseConstraint = MouseConstraint.create(engine, {
-  mouse,
-  constraint: {
-    stiffness: 0.2,
-    render: { visible: false }
-  }
-});
 
-Composite.add(world, mouseConstraint);
-render.mouse = mouse;
+const NORMAL_PEG_BOOST = 1.2;
+const SUPER_PEG_BOOST = 2.0;
+
+
+Matter.Events.on(engine, "collisionStart", function(event) {
+  event.pairs.forEach(pair => {
+    const { bodyA, bodyB } = pair;
+
+    const ball =
+      bodyA.label === "Ball" ? bodyA :
+      bodyB.label === "Ball" ? bodyB :
+      null;
+
+    const peg =
+      pegs.includes(bodyA) ? bodyA :
+      pegs.includes(bodyB) ? bodyB :
+      null;
+
+    if (ball && peg) {
+      const boost = peg.isSuperPeg ? SUPER_PEG_BOOST : NORMAL_PEG_BOOST;
+
+      Matter.Body.setVelocity(ball, {
+        x: ball.velocity.x * boost,
+        y: ball.velocity.y * boost
+      });
+
+      if (peg.isSuperPeg && !ball.hasSpawnedExtra) 
+      {
+        ball.hasSpawnedExtra = true;
+
+        dropBall (80);
+      }
+    }
+  });
+});
 
