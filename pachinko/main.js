@@ -19,8 +19,8 @@ const render = Render.create({
   canvas: document.getElementById("world"),
   engine,
   options: {
-    width: 600,
-    height: 400,
+    width: 500,
+    height: 500,
     wireframes: false,
     background: "#000"
   }
@@ -29,85 +29,35 @@ const render = Render.create({
 Render.run(render);
 Runner.run(Runner.create(), engine);
 
-// ----- WALLS -----
-const walls = [
-  Bodies.rectangle(300, 400, 600, 40, { isStatic: true }), // floor
-  Bodies.rectangle(50, 400, 40, 800, { isStatic: true }), // left
-  Bodies.rectangle(350, 400, 40, 800, { isStatic: true }),
-  Bodies.rectangle(300, 0, 600, 40, { isStatic: true })
-];
+const { Constraint, Events } = Matter;
 
-Composite.add(world, walls);
+const flipperWidth = 80;
+const flipperHeight = 15;
+const flipperY = 430;
 
-// ----- PEGS -----
-const pegRadius = 9;
+const leftFlipper = Bodies.rectangle(
+  180,
+  flipperY,
+  flipperWidth,
+  flipperHeight,
+  {
+    density: 0.004,
+    friction: 0,
+    frictionAir: 0.001,
+    restitution: 0.9,
+  }
+);
 
-const pegs = 
-  [
-    Bodies.polygon(200, 260, 3, pegRadius, 
-      { 
-        isStatic: true,
-        isSuperPeg: true,
-        render: { fillStyle: "#ff0" }
-      })
-  ];
-
-Composite.add(world, pegs);
-
-// ----- BALL DROP -----
-function dropBall(x = 30) {
-  const ball = Bodies.circle(80, 40, 8, {
-    label: "Ball",
-    restitution: 1.1,   // bounciness
-    friction: 0.001,
-    density: 0.002,
-    render: { fillStyle: "#fff" },
-    hasSpawnedExtra: false
-  });
-  Composite.add(world, ball);
-}
-
-// ----- CLICK TO DROP -----
-document.addEventListener("click", (e) => {
-  const rect = render.canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  dropBall(x);
+const leftPivot = Constraint.create({
+  pointA: { x:140, y: flipperY },
+  bodyB: leftFlipper,
+  pointB: { x:-flipperWidth / 2, y: 0},
+  stiffness: 1,
+  length: 0
 });
 
-
-const NORMAL_PEG_BOOST = 1.2;
-const SUPER_PEG_BOOST = 2.0;
-
-
-Matter.Events.on(engine, "collisionStart", function(event) {
-  event.pairs.forEach(pair => {
-    const { bodyA, bodyB } = pair;
-
-    const ball =
-      bodyA.label === "Ball" ? bodyA :
-      bodyB.label === "Ball" ? bodyB :
-      null;
-
-    const peg =
-      pegs.includes(bodyA) ? bodyA :
-      pegs.includes(bodyB) ? bodyB :
-      null;
-
-    if (ball && peg) {
-      const boost = peg.isSuperPeg ? SUPER_PEG_BOOST : NORMAL_PEG_BOOST;
-
-      Matter.Body.setVelocity(ball, {
-        x: ball.velocity.x * boost,
-        y: ball.velocity.y * boost
-      });
-
-      if (peg.isSuperPeg && !ball.hasSpawnedExtra) 
-      {
-        ball.hasSpawnedExtra = true;
-
-        dropBall (80);
-      }
-    }
-  });
-});
+Composite.add(world, [
+  leftFlipper,
+  leftPivot
+]);
 
