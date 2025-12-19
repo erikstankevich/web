@@ -1,6 +1,6 @@
 const 
 { 
-  Engine, Render, Runner, Bodies, Composite, Events, Mouse, MouseConstraint } = Matter;
+  Engine, Render, Runner, Bodies, Composite, Events, Mouse, MouseConstraint, World, Body } = Matter;
 
 // ----- ENGINE -----
 const engine = Engine.create();
@@ -44,6 +44,17 @@ const rightFlipper = Bodies.rectangle(375, flipperY, flipperWidth, flipperHeight
   render: { fillStyle: "#ccc" }
 });
 
+const teleportSensor = Bodies.rectangle(250, 80, 18, 80, {
+  isStatic: true,
+  isSensor: true,
+  render:
+  {
+    fillStyle:"#555" 
+    //visible: false
+  }
+});
+Composite.add(world, teleportSensor);
+
 Composite.add(world, [leftFlipper, rightFlipper]);
 
 // ----- FLIP CONTROL -----
@@ -59,6 +70,19 @@ Events.on(engine, "beforeUpdate", () => {
   Matter.Body.setAngle(leftFlipper, leftAngle);
   Matter.Body.setAngle(rightFlipper, rightAngle);
 });
+
+// T-Object
+const splitterStem = Bodies.rectangle(250, 60, 20, 60, {
+  isStatic: true,
+  render: { fillStyle: "#fff"}
+});
+
+const splitterTop = Bodies.rectangle(250, 40, 250, 20, {
+  isStatic: true,
+  render: {fillStyle: '#fff'}
+});
+
+Composite.add(world, [splitterStem, splitterTop]);
 
 // ----- MOUSE CONTROL -----
 const mouse = Mouse.create(render.canvas);
@@ -79,8 +103,8 @@ document.addEventListener("mouseup", (e) => {
 
 const ball = Bodies.circle(
   render.options.width /2,
-  render.options.height / 2,
-  20,
+  500,
+  10,
   {
     restitution: 0.8,
     render:
@@ -88,7 +112,8 @@ const ball = Bodies.circle(
       fillStyle: 'green'
     }
   });
-World.add(world, ball);
 
-Body.setVelocity(ball, { x:0, y: -10});
+
+World.add(world, ball);
+Body.setVelocity(ball, { x:0, y: -20});
 
