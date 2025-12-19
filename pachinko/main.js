@@ -31,16 +31,30 @@ Runner.run(Runner.create(), engine);
 
 const { Constraint, Events } = Matter;
 
-const flipperWidth = 80;
+const flipperWidth = 220;
 const flipperHeight = 15;
 const flipperY = 430;
 
 const leftFlipper = Bodies.rectangle(
-  180,
+  125,
   flipperY,
   flipperWidth,
   flipperHeight,
   {
+    isStatic: true,
+    density: 0.004,
+    friction: 0,
+    frictionAir: 0.001,
+    restitution: 0.9,
+  }
+);
+const rightFlipper = Bodies.rectangle(
+  375,
+  flipperY,
+  flipperWidth,
+  flipperHeight,
+  {
+    isStatic: true,
     density: 0.004,
     friction: 0,
     frictionAir: 0.001,
@@ -48,16 +62,10 @@ const leftFlipper = Bodies.rectangle(
   }
 );
 
-const leftPivot = Constraint.create({
-  pointA: { x:140, y: flipperY },
-  bodyB: leftFlipper,
-  pointB: { x:-flipperWidth / 2, y: 0},
-  stiffness: 1,
-  length: 0
-});
+
 
 Composite.add(world, [
   leftFlipper,
-  leftPivot
+  rightFlipper,
 ]);
 
