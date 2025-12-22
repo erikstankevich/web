@@ -44,13 +44,13 @@ const rightFlipper = Bodies.rectangle(375, flipperY, flipperWidth, flipperHeight
   render: { fillStyle: "#ccc" }
 });
 
-const teleportSensor = Bodies.rectangle(250, 80, 18, 80, {
+const teleportSensor = Bodies.rectangle(250, 50, 18, 80, {
   isStatic: true,
   isSensor: true,
   render:
   {
-    fillStyle:"#555" 
-    //visible: false
+    //fillStyle:"#555" 
+    visible: false
   }
 });
 Composite.add(world, teleportSensor);
@@ -112,6 +112,22 @@ const ball = Bodies.circle(
       fillStyle: 'green'
     }
   });
+
+Events.on(engine, "collisionStart", event => {
+  event.pairs.forEach(pair => {
+    if (pair.bodyA === teleportSensor || pair.bodyB === teleportSensor) {
+      Body.setStatic(ball, true);
+      ball.render.visible = false;
+
+      setTimeout(() => {
+        ball.render.visible = true;
+        Body.setStatic(ball, false);
+        Body.setPosition(ball, {x: 125, y: 60 });
+        Body.setVelocity(ball, {x: 0, y: 2 });
+      }, 500);
+    }
+  });
+});
 
 
 World.add(world, ball);
