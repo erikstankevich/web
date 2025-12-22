@@ -120,14 +120,58 @@ Events.on(engine, "collisionStart", event => {
       ball.render.visible = false;
 
       setTimeout(() => {
+        const dropX = Math.random() < 0.5 ? 125 :375;
+      
         ball.render.visible = true;
         Body.setStatic(ball, false);
-        Body.setPosition(ball, {x: 125, y: 60 });
+        Body.setPosition(ball, {x: dropX, y: 60 });
         Body.setVelocity(ball, {x: 0, y: 2 });
       }, 500);
     }
   });
 });
+
+/*
+Events.on(engine, "collisionStart", event => {
+  event.pairs.forEach(pair => {
+    const bodies = [pair.bodyA, pair.bodyB];
+    const hitBall = bodies.includes(ball);
+    const hitLeft = bodies.includes(leftFlipper);
+    const hitRight = bodies.includes(rightFlipper);
+
+    if (hitBall && (hitLeft || hitRight))
+    {
+      Body.setStatic(ball, true);
+      setTimeout(() => {
+        const dropX = Math.random() < 0.5 ? 125 :375;
+    
+        ball.render.visible = true;
+        Body.setStatic(ball, false);
+        //Body.setPosition(ball, {x: ball.position.x, y: ball.position.y - 50 });
+        Body.setVelocity(ball, {x: 0, y: -2 });
+      }, 500);
+
+    }
+  });
+});*/
+Events.on(engine, "collisionActive", event => {
+  event.pairs.forEach(pair => {
+    const bodies = [pair.bodyA, pair.bodyB];
+
+    if (
+      bodies.includes(ball) &&
+      (bodies.includes(leftFlipper) || bodies.includes(rightFlipper))
+    ) {
+      const side = bodies.includes(leftFlipper) ? -1 : 1;
+
+      Body.setVelocity(ball, {
+        x: side * 4, // sideways kick
+        y: -12       // strong upward
+      });
+    }
+  });
+});
+
 
 
 World.add(world, ball);
