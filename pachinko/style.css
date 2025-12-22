@@ -1,9 +1,16 @@
-body
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+.top
 {
   display: grid;
   grid-template-columns: 1fr;
   margin: 0;
-  background: #111;
+  background: #555;
   color: white;
   font-family: sans-serif;
   display: flex;
@@ -13,6 +20,19 @@ body
 }
 canvas
 {
-  border: 2px solid #444;
+  border: 4px solid #161617;
   background: #000;
+}
+
+.banner
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  font-size: 1.6rem;
+  color: #f57e46;
+  background-color: #161617;
+  padding: 0.8rem;
+  font-family: "Times New Roman";
 }

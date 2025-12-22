@@ -17,7 +17,7 @@ Render.run(render);
 Runner.run(Runner.create(), engine);
 
 // ----- FLIPPERS -----
-const flipperWidth = 110;
+const flipperWidth = 150;
 const flipperHeight = 15;
 const flipperY = 430;
 
@@ -50,8 +50,8 @@ for (let i = 0; i < pegCount; i++) {
 Composite.add(world, pegs);
 
 // ----- T-OBJECT -----
-const splitterStem = Bodies.rectangle(250, 60, 20, 60, { isStatic: true, render: { fillStyle: "#fff" } });
-const splitterTop = Bodies.rectangle(250, 40, 250, 20, { isStatic: true, render: { fillStyle: "#fff" } });
+const splitterStem = Bodies.rectangle(250, 60, 20, 60, { isStatic: true, render: { fillStyle: "#ccc" } });
+const splitterTop = Bodies.rectangle(250, 40, 250, 20, { isStatic: true, render: { fillStyle: "#ccc" } });
 Composite.add(world, [splitterStem, splitterTop]);
 
 // ----- FLIP CONTROL -----
