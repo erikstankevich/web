@@ -3,7 +3,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
+}
+a
+{
+  color: inherit;
+  text-decoration: none;
 }
 .top
 {
@@ -35,4 +39,16 @@ canvas
   background-color: #161617;
   padding: 0.8rem;
   font-family: "Times New Roman";
+}
+.foot
+{
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap; 4rem;
+  font-size: 0.9rem;
+  background-color: #222;
+  font-family: sans-serif;
+  color: #999;
 }

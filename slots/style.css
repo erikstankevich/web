@@ -1,0 +1,46 @@
+:root
+{
+  --icon_width: 79px;
+  --icon_height: 79px;
+  --num_icons: 9;
+}
+
+
+* 
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body 
+{
+  height: 100%;
+}
+
+body 
+{
+  background-color: #121213;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slots
+{
+  border: 1px solid black;
+  /*width: calc(5 * var(--icon_width));*/
+  /*height: calc(4 * var(--icon_height));*/
+  display: grid;
+  grid-template-columns: repeat(5, var(--icon_width));
+  gap: 3px;
+
+}
+
+.reel
+{
+  width: var(--icon_width);
+  height: calc(4* var(--icon_height));
+  background-image: url(https://assets.codepen.io/439000/slotreel.webp);
+}
+
