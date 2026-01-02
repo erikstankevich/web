@@ -25,6 +25,6 @@ const rollAll = () => {
 
 
 
-
 rollAll();
+document.querySelector('#spin').addEventListener('click', rollAll);
 
